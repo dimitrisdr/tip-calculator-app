@@ -1,0 +1,238 @@
+/* css reset */
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li {
+    list-style: none;
+}
+
+h1 {
+    line-height: 1.1;
+}
+
+button {
+    background-color: inherit;
+}
+
+input {
+    font-family: inherit;
+}
+
+
+:root {
+    /* Primary */
+    --Strong-cyan: hsl(172, 67%, 45%);
+    /* Neutral */
+    --Very-dark-cyan: hsl(183, 100%, 15%);
+    --Dark-grayish-cyan: hsl(186, 14%, 43%);
+    --Grayish-cyan: hsl(184, 14%, 56%);
+    --Light-grayish-cyan: hsl(185, 41%, 84%);
+    --Very-light-grayish-cyan: hsl(189, 41%, 97%);
+    --White: hsl(0, 0%, 100%);
+}
+
+/* utility classes */
+
+.title {
+    color: var(--Dark-grayish-cyan);
+}
+
+.small-title {
+    font-size: 0.9rem;
+}
+
+.very-sm-title {
+    font-size: 0.8rem;
+}
+
+.section {
+    display: grid;
+    gap: 1rem;
+}
+
+/* main style */
+
+body {
+    display: grid;
+    place-content: center;
+    gap: 2rem;
+    min-height: 100vh;
+    font-family: 'Space Mono';
+    background-color: var(--Grayish-cyan);
+    line-height: 1.5;
+    margin-block: 2rem;
+}
+
+.title-container {
+    text-align: center;
+}
+
+.main-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--Very-dark-cyan);
+    letter-spacing: 2px;
+}
+
+.wraper{
+    background-color: var(--White);
+    padding: 1.5rem;
+    border-radius: 12px;
+    display: grid;
+    gap: 2rem;
+    max-width: 385px;
+}
+
+.input-container {
+    display: flex;
+    position: relative;   
+}
+
+.input-container::before {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 100%;
+}
+
+.dollar-sign::before {
+    content: '';
+    background: url('images/icon-dollar.svg') no-repeat left center;
+    width: 1rem;
+}
+
+.people-sign::before {
+    content: '';
+    background: url('images/icon-person.svg') no-repeat left center;
+    width: 1rem;
+}
+
+.input-item {
+    display: grid;
+    gap: 0.4rem;
+}
+
+.input {
+    background-color: var(--Very-light-grayish-cyan);
+    color: var(--Very-dark-cyan);
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    text-align: right; 
+}
+
+.input::placeholder {
+    color: var(--Light-grayish-cyan);
+}
+
+.input:focus {
+    outline: 2px solid var(--Very-dark-cyan);
+}
+
+.main-input {
+    padding: 0.5rem 1rem;
+    flex-grow: 1;
+}
+
+.custom-input {
+    min-width: 0;
+    width: 100%;
+    padding-inline: 1rem;
+}
+
+.custom-input:focus {
+    outline: 2px solid var(--Very-dark-cyan);
+}
+
+.tip-items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.tip-item {
+    display: flex;
+}
+
+.tip-item .btn {
+    flex-grow: 1;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.tip-btn {
+    background-color: var(--Very-dark-cyan);
+    color: var(--White);
+    transition: 0.2s ease-in-out;
+}
+
+.tip-btn:hover, .tip-btn:focus {
+    background-color: var(--Strong-cyan);
+    color: var(--Very-dark-cyan);
+}
+
+.reset-btn {
+    background-color: var(--Strong-cyan);
+    color: var(--Very-dark-cyan);
+}
+
+.empty .reset-btn {
+    opacity: 0.2;
+}
+
+.results-section {
+    background-color: var(--Very-dark-cyan);
+    display: grid;
+    gap: 1rem;
+    border-radius: 12px;
+    padding-inline: 1.5rem;
+    padding-block: 2rem 1rem;
+}
+
+.results-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    line-height: 1.2;
+}
+
+.results-txt {
+    color: var(--White);
+}
+
+.result-num {
+    color: var(--Strong-cyan);
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+/* front end mentor style */
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }
+
+@media screen and (min-width:750px) {
+
+    .wraper {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 700px;
+    }
+
+    .reset-btn {
+        align-self: flex-end;
+    }
+}
