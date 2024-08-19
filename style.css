@@ -266,6 +266,15 @@ body {
         max-width: 700px;
     }
 
+    .tip-items {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+    }
+
+    .custom-input {
+        padding-inline: 0.2rem;
+    }
+
     .results-section {
         align-items: flex-start;
     }
