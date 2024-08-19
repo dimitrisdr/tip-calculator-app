@@ -56,8 +56,9 @@ function resetValues() {
 function returnResults() {
     let tipNumberPerPerson = Math.floor(( ((dataForBill['tip'].amount / 100) * dataForBill['bill'].amount) / dataForBill['persons'].amount)*100) / 100
     let finalResultsNum = (Math.floor((dataForBill['bill'].amount / dataForBill['persons'].amount) * 100) /100) 
-    tipResults.textContent = tipNumberPerPerson
-    totalResults.textContent = Math.floor((finalResultsNum + tipNumberPerPerson) * 100) / 100
+    let finalResults = Math.floor((finalResultsNum + tipNumberPerPerson) * 100) / 100 
+    tipResults.textContent = tipNumberPerPerson === 0? '0.00' : tipNumberPerPerson
+    totalResults.textContent = finalResults === 0 ? '0.00' : finalResults
 }
 
 inputs.forEach(input => input.addEventListener('input', handleInputs))
