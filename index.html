@@ -23,7 +23,10 @@
   <main class="wraper empty">
     <section aria-label="User Inputs Section" class="section user-inputs-scetion">
       <div class="input-item">
-        <label for="bill-input" class="title small-title">Bill</label>
+        <div class="labels-container">
+          <label for="bill-input" class="title small-title">Bill</label>
+          <p class="invalid-msg">Invalid Value!</p>
+        </div>
         <div class="input-container dollar-sign">
           <input id="bill-input" data-item="bill"  type="number" min="0" step="0.01" class="input main-input" placeholder="0">
         </div> 
@@ -40,9 +43,13 @@
         </ul>
       </div>
       <div class="input-item">
-        <label for="people-input" class="title small-title">Number of People</label>
+        <div class="labels-container">
+          <label for="people-input" class="title small-title">Number of People</label>
+          <p class="invalid-msg">Invalid Value!</p>
+        </div>
+        
         <div class="input-container people-sign">
-          <input data-item="persons"  id="people-input" step="1" type="number" min="1" class="input main-input" placeholder="0">
+          <input data-item="persons" value="1"  id="people-input" step="1" type="number" min="1" class="input main-input" placeholder="0">
         </div>
       </div>
     </section>

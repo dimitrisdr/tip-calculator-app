@@ -32,6 +32,7 @@ input {
     --Grayish-cyan: hsl(184, 14%, 56%);
     --Light-grayish-cyan: hsl(185, 41%, 84%);
     --Very-light-grayish-cyan: hsl(189, 41%, 97%);
+    --Warning:hsl(0, 85%, 60%);
     --White: hsl(0, 0%, 100%);
 }
 
@@ -85,6 +86,31 @@ body {
     display: grid;
     gap: 2rem;
     max-width: 385px;
+}
+
+.labels-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.invalid-msg {
+    font-size: 0.8rem;
+    color: var(--Warning);
+    display: none;
+}
+
+.invalid .invalid-msg{
+    display: block;
+}
+
+.invalid .input {
+    border: 1px solid var(--Warning);
+}
+
+.invalid .input:focus {
+    outline: none;
 }
 
 .input-container {

@@ -6,33 +6,42 @@ let tipResults = document.querySelector('.tip-result')
 let totalResults = document.querySelector('.total-result')
 
 let dataForBill = {
-    'bill':0,
-    'tip':0,
-    'persons':0
+    'bill':{amount:0, validation: (e)=> e >= 0},
+    'tip':{amount:0, validation: (e)=> e >= 0},
+    'persons':{amount:1, validation: (e)=> e > 0 || e === 0}
 }
 
 function handleTipBtns(e){
-    dataForBill['tip'] = Number(+e.target.dataset.value)
+    dataForBill['tip'].amount = Number(+e.target.dataset.value)
     returnResults()
     console.log(dataForBill)
 }
 
 function handleInputs(e) {
     let category = e.target.dataset.item
-    dataForBill[category] = Number(+e.target.value)
-    console.log(dataForBill)
-    returnResults()
+    if (validateData(dataForBill, category, e.target.value)){
+        dataForBill[category].amount = Number(+e.target.value)
+        e.target.parentNode.parentNode.classList.remove('invalid')
+        returnResults()
+    }else {
+        e.target.parentNode.parentNode.classList.add('invalid')
+    }
+}
+
+function validateData(data, category, value) {
+    return data[category].validation(value)
 }
 
 function resetValues() {
     tipResults.textContent = '0.00'
     totalResults.textContent = '0.00'
-    inputs.forEach(input => input.value = '')
+    inputs.forEach(input => input.matches('#people-input')? input.value = 1 : input.value = '')
 }
 
 function returnResults() {
-    let tipNumberPerPerson = Math.floor(( ((dataForBill['tip'] / 100) * dataForBill['bill']) / dataForBill['persons'])*100) / 100
-    let finalResultsNum = (Math.floor((dataForBill['bill'] / dataForBill['persons']) * 100) /100) 
+    console.log(dataForBill['bill'].amount)
+    let tipNumberPerPerson = Math.floor(( ((dataForBill['tip'].amount / 100) * dataForBill['bill'].amount) / dataForBill['persons'].amount)*100) / 100
+    let finalResultsNum = (Math.floor((dataForBill['bill'].amount / dataForBill['persons'].amount) * 100) /100) 
     tipResults.textContent = tipNumberPerPerson
     totalResults.textContent = Math.floor((finalResultsNum + tipNumberPerPerson) * 100) / 100
 }
