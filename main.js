@@ -1,9 +1,12 @@
 let wraper = document.querySelector('.wraper');
-let inputs = document.querySelectorAll('.input')
-let tipBtns = document.querySelectorAll('.tip-btn')
-let resetBatn = document.querySelector('.reset-btn')
-let tipResults = document.querySelector('.tip-result')
-let totalResults = document.querySelector('.total-result')
+let inputs = document.querySelectorAll('.input');
+let billInput = Array.from(inputs).filter(e => e.matches('#bill-input'))[0]
+let tipBtns = document.querySelectorAll('.tip-btn');
+let resetBatn = document.querySelector('.reset-btn');
+let tipResults = document.querySelector('.tip-result');
+let totalResults = document.querySelector('.total-result');
+
+
 
 let dataForBill = {
     'bill':{amount:0, validation: (e) => e >= 0},
@@ -28,8 +31,18 @@ function handleTipBtns(e){
     console.log(dataForBill)
 }
 
+function isNotEmpty(inpt){
+    console.log(inpt.value === ''? false : true )
+    return inpt.value === ''? false : true ;
+}
+
 function handleInputs(e) {
     let category = e.target.dataset.item
+    if (isNotEmpty(billInput)){
+        wraper.classList.remove('empty')
+    }else {
+        wraper.classList.add('empty')
+    }
     if (validateData(dataForBill, category, e.target.value)){
         if (e.target.matches('.custom-input') && e.target.value !== '') {
             tipBtns.forEach(btn => btn.classList.remove('active'))
@@ -51,6 +64,7 @@ function resetValues() {
     tipResults.textContent = '0.00'
     totalResults.textContent = '0.00'
     inputs.forEach(input => input.matches('#people-input')? input.value = 1 : input.value = '')
+    wraper.classList.add('empty')
 }
 
 function returnResults() {

@@ -157,7 +157,7 @@ body {
     color: var(--Light-grayish-cyan);
 }
 
-.input:focus {
+.input:focus, .custom-input:focus {
     outline: 2px solid var(--Strong-cyan);
 }
 
@@ -170,10 +170,6 @@ body {
     min-width: 0;
     width: 100%;
     padding-inline: 1rem;
-}
-
-.custom-input:focus {
-    outline: 2px solid var(--Very-dark-cyan);
 }
 
 .tip-items {
@@ -218,6 +214,7 @@ body {
 
 .empty .reset-btn {
     opacity: 0.2;
+    pointer-events: none;
 }
 
 .results-section {
@@ -248,8 +245,14 @@ body {
 }
 
 /* front end mentor style */
-.attribution { font-size: 11px; text-align: center; }
-.attribution a { color: hsl(228, 45%, 44%); }
+
+.attribution { 
+    font-size: 11px; 
+    text-align: center; 
+}
+.attribution a { 
+    color: hsl(228, 45%, 44%); 
+}
 
 @media screen and (min-width:750px) {
 
