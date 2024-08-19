@@ -63,7 +63,7 @@ body {
     gap: 2rem;
     min-height: 100vh;
     font-family: 'Space Mono';
-    background-color: var(--Grayish-cyan);
+    background-color: var(--Light-grayish-cyan);
     line-height: 1.5;
     margin-block: 2rem;
 }
@@ -74,9 +74,9 @@ body {
 
 .main-title {
     font-size: 1.6rem;
-    font-weight: 700;
+    font-weight: 500;
     color: var(--Very-dark-cyan);
-    letter-spacing: 2px;
+    letter-spacing: 5px;
 }
 
 .wraper{
@@ -172,6 +172,10 @@ body {
     padding-inline: 1rem;
 }
 
+.custom-input::placeholder {
+    color: var(--Grayish-cyan);
+}
+
 .tip-items {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -259,6 +263,10 @@ body {
     .wraper {
         grid-template-columns: repeat(2, 1fr);
         max-width: 700px;
+    }
+
+    .results-section {
+        align-items: flex-start;
     }
 
     .reset-btn {
