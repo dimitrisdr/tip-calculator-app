@@ -6,13 +6,24 @@ let tipResults = document.querySelector('.tip-result')
 let totalResults = document.querySelector('.total-result')
 
 let dataForBill = {
-    'bill':{amount:0, validation: (e)=> e >= 0},
-    'tip':{amount:0, validation: (e)=> e >= 0},
-    'persons':{amount:1, validation: (e)=> e > 0 || e === 0}
+    'bill':{amount:0, validation: (e) => e >= 0},
+    'tip':{amount:0, validation: (e) => e >= 0},
+    'persons':{amount:1, validation: (e) => e > 0 || e === ''}
+}
+
+function validatePersons(e){
+    if ( e > 0 || e === '') {
+        dataForBill['persons'].amount = (e > 0) ? e : 1
+        return true;
+    }else {
+        return false;
+    }
 }
 
 function handleTipBtns(e){
     dataForBill['tip'].amount = Number(+e.target.dataset.value)
+    tipBtns.forEach(btn => btn.classList.remove('active'))
+    e.target.classList.add('active')
     returnResults()
     console.log(dataForBill)
 }
@@ -20,8 +31,12 @@ function handleTipBtns(e){
 function handleInputs(e) {
     let category = e.target.dataset.item
     if (validateData(dataForBill, category, e.target.value)){
-        dataForBill[category].amount = Number(+e.target.value)
+        if (e.target.matches('.custom-input') && e.target.value !== '') {
+            tipBtns.forEach(btn => btn.classList.remove('active'))
+        }
+        dataForBill[category].amount = (category === 'persons' && e.target.value === '') ? 1 : Number(+e.target.value)
         e.target.parentNode.parentNode.classList.remove('invalid')
+        console.log(dataForBill)
         returnResults()
     }else {
         e.target.parentNode.parentNode.classList.add('invalid')
@@ -39,7 +54,6 @@ function resetValues() {
 }
 
 function returnResults() {
-    console.log(dataForBill['bill'].amount)
     let tipNumberPerPerson = Math.floor(( ((dataForBill['tip'].amount / 100) * dataForBill['bill'].amount) / dataForBill['persons'].amount)*100) / 100
     let finalResultsNum = (Math.floor((dataForBill['bill'].amount / dataForBill['persons'].amount) * 100) /100) 
     tipResults.textContent = tipNumberPerPerson

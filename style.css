@@ -206,7 +206,7 @@ body {
     transition: 0.2s ease-in-out;
 }
 
-.tip-btn:hover, .tip-btn:focus {
+.tip-btn:hover, .tip-btn:focus, .active {
     background-color: var(--Strong-cyan);
     color: var(--Very-dark-cyan);
 }
